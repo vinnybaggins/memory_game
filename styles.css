@@ -117,7 +117,7 @@ h1{
     text-align: center;
     border: 2px solid var(--light-color);
 
-    background-image: url('../images/back.jpg');
+    background-image: url('images/back.jpg');
     background-position: center;
     background-size: cover;
 }
