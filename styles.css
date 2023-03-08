@@ -80,7 +80,7 @@ h1{
     margin-right: auto;
 }
 
-#scoreBoard{
+.scorePlace{
     display: flex;
     gap: 20px;
     flex-basis: 100%;
@@ -137,7 +137,7 @@ h1{
     width: 120px;
 }
 
-#returnButton{
+.returnButton{
     text-align: center;
     cursor: pointer;
     display: block;
