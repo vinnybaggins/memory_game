@@ -6,6 +6,8 @@ const hard = document.querySelector("#hard");
 
 const difficultyTable = document.querySelector("#difficulty-table");
 
+const game = document.querySelector("#game");
+
 const cardsBoard = document.querySelector('#cardsBoard');
 
 const cardArray = [];
@@ -117,9 +119,17 @@ const backgroundHard = [
     "url('images/4.jpg')"
 ];
 
-const returnButton = document.querySelector("#returnButton");
+const returnGame = document.querySelector("#returnGame");
+
+const returnVictory = document.querySelector("#returnVictory");
+
+const scoreBoard = document.querySelector("#scoreBoard");
 
 const scoreNumber = document.querySelector("#scoreNumber");
+
+const victory = document.querySelector("#victory");
+
+const scoreVictory = document.querySelector("#scoreVictory");
 
 let score = 0;
 
@@ -155,10 +165,45 @@ function createCards(n,className,background){
 }
 
 function showCards(){
-        
-    difficultyTable.classList.toggle("hide");
-    game.classList.toggle("hide");
-    returnButton.classList.toggle("hide");
+
+    //show the game
+    game.classList.remove("hide");
+    scoreBoard.classList.remove("hide");
+    cardsBoard.classList.remove("hide");
+    returnGame.classList.remove("hide");
+    //hide the table
+    difficultyTable.classList.add("hide");
+    returnVictory.classList.add("hide");
+
+}
+
+function hideCards(){
+    
+    //hide the game
+    game.classList.add("hide");
+    returnGame.classList.add("hide");
+    //show the table
+    difficultyTable.classList.remove("hide");
+
+}
+
+function showScore(){
+    
+    scoreVictory.innerText = score;
+    //hide the cards
+    scoreBoard.classList.add("hide");
+    cardsBoard.classList.add("hide");
+    returnGame.classList.add("hide");
+    //show victory
+    victory.classList.remove("hide");
+    returnVictory.classList.remove("hide");
+
+}
+
+function hideScore(){
+    
+    scoreBoard.classList.add("hide");
+    victory.classList.add("hide");
 
 }
 
@@ -183,6 +228,8 @@ easy.addEventListener("click", function(){
     shuffle(backgroundEasy);
 
     createCards(20,"largeCard",backgroundEasy);
+
+    scoreNumber.innerText = score;
     
     showCards();
 
@@ -214,18 +261,25 @@ hard.addEventListener("click", function(){
     
 })
 
-returnButton.addEventListener("click", function(){
+returnGame.addEventListener("click", function(){
 
-    showCards();
+    hideCards();
 
     while(cardsBoard.firstChild){
         cardsBoard.removeChild(cardsBoard.firstChild);
     }
 
     cardArray.length = 0;
+
+    score = 0;
     
 });
 
+returnVictory.addEventListener("click", function(){
+    victory.classList.add("hide");
+    hideCards();
+    returnVictory.classList.add("hide");
+})
 
 // click on cards
 
@@ -291,13 +345,15 @@ function flipCard(card,background){
 }
 
 function showVictory(){
+
+    showScore();
+
     while(cardsBoard.firstChild){
         cardsBoard.removeChild(cardsBoard.firstChild);
     }
-    scoreBoard.innerText = ("You won!\n Score: " + score);
-    score = 0;
-    scoreNumber.innerText = 0;
     
+    score = 0;
+
     cardArray.length = 0;
 
 }
