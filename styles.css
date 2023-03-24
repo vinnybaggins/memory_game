@@ -40,7 +40,7 @@ h1{
     margin-bottom: 20px;
 }
 
-#difficulty-table{
+#levelTable{
     border: 2px solid var(--light-color);
     width: 50%;
     margin-left: auto;
@@ -53,7 +53,7 @@ h1{
     border-radius: 10px;
 }
 
-.difficulty{
+.level{
     color: var(--light-color);
     cursor: pointer;
     background-color: var(--dark-color);
@@ -91,7 +91,7 @@ h1{
     font-weight: bolder;
 }
 
-#scoreNumber{
+#currentScore{
     font-style: normal;
     font-weight: bolder;
     font-size: xx-large;
@@ -113,11 +113,9 @@ h1{
     color: var(--light-color);
     font-size: medium;
     font-weight: 800;
-    padding: 10px;
     text-align: center;
     border: 2px solid var(--light-color);
 
-    background-image: url('images/back.jpg');
     background-position: center;
     background-size: cover;
 }
@@ -137,7 +135,7 @@ h1{
     width: 120px;
 }
 
-.returnButton{
+.returnBtn{
     text-align: center;
     cursor: pointer;
     display: block;
