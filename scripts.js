@@ -1,359 +1,278 @@
-const easy = document.querySelector("#easy");
+const levelTable = document.querySelector("#levelTable")
 
-const medium = document.querySelector("#medium");
-
-const hard = document.querySelector("#hard");
-
-const difficultyTable = document.querySelector("#difficulty-table");
+const easyBtn = document.querySelector("#easyBtn");
+const mediumBtn = document.querySelector("#mediumBtn")
+const hardBtn = document.querySelector("#hardBtn");
 
 const game = document.querySelector("#game");
-
-const cardsBoard = document.querySelector('#cardsBoard');
-
-const cardArray = [];
-
-const backgroundEasy = [
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-    
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')"
-];
-
-const backgroundMedium = [
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')"
-];
-
-const backgroundHard = [
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-    "url('images/11.jpg')",
-    "url('images/12.jpg')",
-    
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-    "url('images/11.jpg')",
-    "url('images/12.jpg')",
-    
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/3.jpg')",
-    "url('images/4.jpg')",
-    "url('images/5.jpg')",
-    "url('images/6.jpg')",
-    "url('images/7.jpg')",
-    "url('images/8.jpg')",
-    "url('images/9.jpg')",
-    "url('images/10.jpg')",
-    "url('images/11.jpg')",
-    "url('images/12.jpg')",
-    
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/4.jpg')",
-    "url('images/1.jpg')",
-    "url('images/2.jpg')",
-    "url('images/4.jpg')"
-];
-
-const returnGame = document.querySelector("#returnGame");
-
-const returnVictory = document.querySelector("#returnVictory");
-
-const scoreBoard = document.querySelector("#scoreBoard");
-
-const scoreNumber = document.querySelector("#scoreNumber");
-
 const victory = document.querySelector("#victory");
 
-const scoreVictory = document.querySelector("#scoreVictory");
+const returnGame = document.querySelector("#returnGame");
+const returnVictory = document.querySelector("#returnVictory");
+
+const cardArray = [];
+let numberOfCards = 0;
+
+const currentScore = document.querySelector("#currentScore");
+const finalScore = document.querySelector("#finalScore");
+
+const imgsEasy = [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg"
+];
+
+const imgsMedium = [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg"
+];
+
+const imgsHard = [
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    "images/11.jpg",
+    "images/12.jpg",
+    
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    "images/11.jpg",
+    "images/12.jpg",
+    
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg",
+    "images/10.jpg",
+    "images/11.jpg",
+    "images/12.jpg",
+    
+    "url('images/1.jpg",
+    "url('images/2.jpg",
+    "url('images/4.jpg",
+    "url('images/1.jpg",
+    "url('images/2.jpg",
+    "url('images/4.jpg"
+];
+
+/********************
+click on level buttons
+*********************/
+
+easyBtn.addEventListener("click", play.bind(this,20,"largeCard",imgsEasy));
+
+mediumBtn.addEventListener("click", play.bind(this,30,"mediumCard",imgsMedium));
+
+hardBtn.addEventListener("click", play.bind(this,42,"smallCard",imgsHard));
+
+function show(element)
+{
+    element.classList.remove("hide");
+}
+
+function hide(element)
+{
+    element.classList.add("hide");
+}
+
+function shuffle(array)
+{
+    for(let i = (array.length - 1); i > 0; i--)
+    {
+        let randNb = Math.floor(Math.random() * (i - 1));
+
+        let tmp = array[i];
+        array[i] = array[randNb];
+        array[randNb] = tmp;
+    }
+}
+
+function createCards(n, cardSize,imgArray)
+{
+    for(let i = 0; i < n; i++)
+    {
+        const card = document.createElement("img");
+        card.classList.add("card", cardSize);
+        card.setAttribute("id",`card${i + 1}`);
+        card.setAttribute("src", "images/back.jpg");
+        
+        cardsBoard.appendChild(card);
+        shuffle(imgArray);
+        card.addEventListener("click", flipCards.bind(this,card,imgArray));
+
+        cardArray.push(card);
+    }
+}
+
+function play(n, cardSize,imgArray)
+{
+    createCards(n, cardSize,imgArray);
+    currentScore.innerText = score;
+    numberOfCards = cardArray.length;
+    hide(levelTable);
+    show(game);
+}
+
+/********************
+click on cards
+*********************/
+
+let firstCard;
+
+let numberOpen = 0;
 
 let score = 0;
 
 let progress = 0;
 
-let sumOfCards;
-
-let timeOpen = 2000;
-
-
-// create cards
-
-function createCards(n,className,background){
-
-    for (let i = 0; i < n; i++) {	
-		
-        const card = document.createElement("div");
-
-        card.classList.add("card",className);
-        
-        card.setAttribute('id','card'+i);
-		
-		card.addEventListener('click', flipCard.bind(this,card,background));
-
-        cardArray.push(card);
-
-        cardsBoard.appendChild(card);
-
-    }
-
-    sumOfCards = cardArray.length;
-
-}
-
-function showCards(){
-
-    //show the game
-    game.classList.remove("hide");
-    scoreBoard.classList.remove("hide");
-    cardsBoard.classList.remove("hide");
-    returnGame.classList.remove("hide");
-    //hide the table
-    difficultyTable.classList.add("hide");
-    returnVictory.classList.add("hide");
-
-}
-
-function hideCards(){
-    
-    //hide the game
-    game.classList.add("hide");
-    returnGame.classList.add("hide");
-    //show the table
-    difficultyTable.classList.remove("hide");
-
-}
-
-function showScore(){
-    
-    scoreVictory.innerText = score;
-    //hide the cards
-    scoreBoard.classList.add("hide");
-    cardsBoard.classList.add("hide");
-    returnGame.classList.add("hide");
-    //show victory
-    victory.classList.remove("hide");
-    returnVictory.classList.remove("hide");
-
-}
-
-function hideScore(){
-    
-    scoreBoard.classList.add("hide");
-    victory.classList.add("hide");
-
-}
-
-function shuffle(array){
-
-    for (let i = (array.length - 1); i > 0; i--){
-    
-        let j = Math.floor(Math.random() * (i - 1));
-
-        let k = array[i];
-        array[i] = array [j];
-        array[j] = k;
-
-    }
-
-}
-
-// choose difficulty
-
-easy.addEventListener("click", function(){
-
-    shuffle(backgroundEasy);
-
-    createCards(20,"largeCard",backgroundEasy);
-
-    scoreNumber.innerText = score;
-    
-    showCards();
-
-    window.scroll(0,64);
-    
-})
-
-medium.addEventListener("click", function(){
-
-    shuffle(backgroundMedium);
-
-    createCards(30,"mediumCard",backgroundMedium);
-    
-    showCards();
-
-    window.scroll(0,64);
-    
-})
-
-hard.addEventListener("click", function(){
-
-    shuffle(backgroundHard);
-
-    createCards(42,"smallCard",backgroundHard);
-    
-    showCards();
-
-    window.scroll(0,64);
-    
-})
-
-returnGame.addEventListener("click", function(){
-
-    hideCards();
-
-    while(cardsBoard.firstChild){
-        cardsBoard.removeChild(cardsBoard.firstChild);
-    }
-
-    cardArray.length = 0;
-
-    score = 0;
-    
-});
-
-returnVictory.addEventListener("click", function(){
-    victory.classList.add("hide");
-    hideCards();
-    returnVictory.classList.add("hide");
-})
-
-// click on cards
-
-let numberOpen = 0;
-
-let firstCard;
-
-function flipCard(card,background){
-    
-    if (numberOpen == 0){//if opening the first card   
-        
-        card.style.backgroundImage = background[cardArray.indexOf(card)];
-
+function flipCards(card, imgArray)
+{
+    if(numberOpen == 0)
+    {
         firstCard = card;
-        
+        card.setAttribute("src",imgArray[cardArray.indexOf(card)]);
+        numberOpen++;
+    } else if(numberOpen == 1){
+        card.setAttribute("src",imgArray[cardArray.indexOf(card)]);
         numberOpen++;
 
-    }else if(numberOpen == 1){//if opening the second card
 
-        numberOpen++;
-        
-        card.style.backgroundImage = background[cardArray.indexOf(card)];
-
-        if(card.id == firstCard.id){//if the same card is pressed
+        if(card.id == firstCard.id)
+        {
             numberOpen = 1;
-        }else if(card.style.backgroundImage == firstCard.style.backgroundImage){//if the cards are equal
-
+        }else{
             setTimeout(
                 function(){
-                    card.style.visibility = "hidden";
-                    firstCard.style.visibility = "hidden";
-
-                    numberOpen = 0;
-                    score += 5;
-                    scoreNumber.innerText = score;
-                    progress += 2;
-
-                    if(progress == sumOfCards){//if player took all cards
-                        showVictory();
+                    if(card.getAttribute("src") == firstCard.getAttribute("src"))
+                    {
+                        card.style.visibility = "hidden";
+                        firstCard.style.visibility = "hidden";
+                        score += 5;
+                        progress += 2;
+                        checkVictory();
+                        currentScore.innerText = score;
                     }
-                },
-                timeOpen
-            )
-        }else if(card.style.backgroundImage != firstCard.style.backgroundImage){//if cards are different
-
-            setTimeout(
-                function(){
-                    card.style.backgroundImage = "";
-                    firstCard.style.backgroundImage = "";
-
-                    numberOpen = 0;
-
-                    if(score > 0){
-                        score -= 1;
+                    else
+                    {
+                        unflipCards(card,firstCard);
+                        numberOpen = 0;
+                        if(score > 0){
+                            score--;
+                        }
+                        currentScore.innerText = score;
                     }
-
-                    scoreNumber.innerText = score;
+                    numberOpen = 0;
                 },
-                timeOpen
-            )
+                2000
+        )
         }
     }
 }
 
-function showVictory(){
 
-    showScore();
+function unflipCards(card,firstCard)
+{
+    card.setAttribute("src", "images/back.jpg");
+    firstCard.setAttribute("src", "images/back.jpg");
+}
 
+
+/********************
+check and show victory
+*********************/
+
+function checkVictory(){
+    if(progress == numberOfCards)
+    {
+        finalScore.innerText = score;
+        show(victory);
+        hide(game);
+        destroyCards();
+    }
+}
+
+function destroyCards(){
     while(cardsBoard.firstChild){
         cardsBoard.removeChild(cardsBoard.firstChild);
     }
-    
+    numberOfCards = 0;
+    progress = 0;
     score = 0;
-
     cardArray.length = 0;
-
 }
+
+returnGame.addEventListener("click", function(){
+    hide(game); show(levelTable); destroyCards();
+})
+
+returnVictory.addEventListener("click", function(){
+    hide(victory); show(levelTable);
+})
