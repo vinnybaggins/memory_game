@@ -5,24 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
+    <link rel="preload" href="images/1.jpg" as="image"/> <link rel="preload" href="images/2.jpg" as="image"/>
+    <link rel="preload" href="images/3.jpg" as="image"/> <link rel="preload" href="images/4.jpg" as="image"/>
+    <link rel="preload" href="images/5.jpg" as="image"/> <link rel="preload" href="images/6.jpg" as="image"/>
+    <link rel="preload" href="images/7.jpg" as="image"/> <link rel="preload" href="images/8.jpg" as="image"/>
+    <link rel="preload" href="images/9.jpg" as="image"/> <link rel="preload" href="images/10.jpg" as="image"/>
+    <link rel="preload" href="images/11.jpg" as="image"/> <link rel="preload" href="images/12.jpg" as="image"/>
+    <link rel="preload" href="images/back.jpg" as="image"/>
     <link rel="stylesheet" href="styles.css">
     <script src="scripts.js" defer></script>
 </head>
 <body>
     <div class="container">
         <h1>Memory game</h1>
-        <div id="difficulty-table">
-            <div id="easy" class="difficulty" tabindex="1">Easy</div>
-            <div id="medium" class="difficulty" tabindex="1">Medium</div>
-            <div id="hard" class="difficulty" tabindex="1">Hard</div>
+        <div id="levelTable">
+            <div id="easyBtn" class="level" tabindex="1">Easy</div>
+            <div id="mediumBtn" class="level" tabindex="1">Medium</div>
+            <div id="hardBtn" class="level" tabindex="1">Hard</div>
         </div>
         <div id="game" class="hide">
-            <div id="scoreBoard" class="scorePlace">Score:<span id="scoreNumber"> 0</span></div>
-            <div id="victory" class="scorePlace hide">You won!<br>Your score is: <span id="scoreVictory"></span></div>
+            <div class="scorePlace">Score:<span id="currentScore"> 0</span></div>
             <div id="cardsBoard"></div>
+            <button id="returnGame" class="returnBtn">Return</button>
         </div>
-        <button id="returnGame" class="returnButton hide">Return</button>
-        <button id="returnVictory" class="returnButton hide">Return</button>
+        <div id="victory" class="hide">
+            <div class="scorePlace">You won!<br>Your score is: <span id="finalScore"></span></div>
+            <button id="returnVictory" class="returnBtn">Return</button>
+        </div>
     </div>
 </body>
 </html>
