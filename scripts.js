@@ -68,11 +68,11 @@ const imgsMedium = [
     "images/3.jpg",
     "images/4.jpg",
     "images/5.jpg",
-    "images/6.jpg",
-    "images/7.jpg",
-    "images/8.jpg",
-    "images/9.jpg",
-    "images/10.jpg"
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg"
 ];
 
 const imgsHard = [
@@ -111,27 +111,26 @@ const imgsHard = [
     "images/7.jpg",
     "images/8.jpg",
     "images/9.jpg",
-    "images/10.jpg",
-    "images/11.jpg",
-    "images/12.jpg",
-    
-    "url('images/1.jpg",
-    "url('images/2.jpg",
-    "url('images/4.jpg",
-    "url('images/1.jpg",
-    "url('images/2.jpg",
-    "url('images/4.jpg"
+    "images/1.jpg",
+    "images/2.jpg",
+    "images/3.jpg",
+    "images/4.jpg",
+    "images/5.jpg",
+    "images/6.jpg",
+    "images/7.jpg",
+    "images/8.jpg",
+    "images/9.jpg"
 ];
 
 /********************
 click on level buttons
 *********************/
 
-easyBtn.addEventListener("click", play.bind(this,20,"largeCard",imgsEasy));
+easyBtn.addEventListener("click", play.bind(this,imgsEasy.length,"largeCard",imgsEasy));
 
-mediumBtn.addEventListener("click", play.bind(this,30,"mediumCard",imgsMedium));
+mediumBtn.addEventListener("click", play.bind(this,imgsMedium.length,"mediumCard",imgsMedium));
 
-hardBtn.addEventListener("click", play.bind(this,42,"smallCard",imgsHard));
+hardBtn.addEventListener("click", play.bind(this,imgsHard.length,"smallCard",imgsHard));
 
 function show(element)
 {
